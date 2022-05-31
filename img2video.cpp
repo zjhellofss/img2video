@@ -1,4 +1,3 @@
-
 #include "img2video.h"
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -118,6 +117,7 @@ void ImageConvertor::Encode() {
   }
   FlushFrames();
 }
+
 std::vector<std::string> ImageConvertor::ReadImages() {
   namespace fs = std::experimental::filesystem;
   auto entries = fs::directory_iterator(this->input_dir_);
@@ -178,7 +178,6 @@ bool ImageConvertor::Init() {
   }
 
   avcodec_parameters_from_context(stream->codecpar, cctx_);
-
   if (int err = avcodec_open2(cctx_, codec, nullptr);err < 0) {
     char err_buf[MSG_SIZE] = {0};
     av_make_error_string(err_buf, MSG_SIZE, err);
