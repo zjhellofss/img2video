@@ -108,7 +108,7 @@ void ImageConvertor::Encode() {
     return;
   }
 
-  av_dump_format(oc_, 0, "test.mp4", 1);
+  av_dump_format(oc_, 0, this->output_filename_.data(), 1);
 
   auto img_paths = this->ReadImages();
   for (const auto &img_path : img_paths) {
